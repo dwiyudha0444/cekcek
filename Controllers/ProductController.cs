@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyNewApp3.Controllers
 {
+    [Route("produk")]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -14,11 +15,15 @@ namespace MyNewApp3.Controllers
         {
             _context = context;
         }
-
+        
+        [Route("")]
+        [Route("daftar")] // Bisa diakses melalui /produk atau /produk/daftar
         public async Task<IActionResult> Index()
         {
             var products = await _context.Products.ToListAsync();
             return View(products);
         }
+
+        
     }
 }
