@@ -169,3 +169,4 @@ D:\latihan\c#\MyNewApp3\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspac
 D:\latihan\c#\MyNewApp3\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\latihan\c#\MyNewApp3\obj\Debug\net9.0\MyNewApp3.csproj.AssemblyReference.cache
 D:\latihan\c#\MyNewApp3\obj\Debug\net9.0\MyNewApp3.csproj.Up2Date
+D:\latihan\c#\MyNewApp3\obj\Debug\net9.0\MyNewApp3.sourcelink.json
