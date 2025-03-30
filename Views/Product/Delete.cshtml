@@ -1,0 +1,22 @@
+@model MyNewApp3.Models.Product
+
+<h2>Konfirmasi Hapus</h2>
+
+<p>Apakah Anda yakin ingin menghapus produk ini?</p>
+
+<table>
+    <tr>
+        <th>Nama Produk</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Harga</th>
+        <td>@Model.Price</td>
+    </tr>
+</table>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Hapus</button>
+    <a asp-action="Index">Batal</a>
+</form>
