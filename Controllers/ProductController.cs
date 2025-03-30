@@ -75,5 +75,57 @@ namespace MyNewApp3.Controllers
             return RedirectToAction("Index"); // Kembali ke daftar produk
         }
 
+         // GET: Product/Edit/5
+        [HttpGet]
+        [Route("Product/Edit/{id}")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        // POST: Product/Edit/5
+        [HttpPost]
+        [Route("Product/Edit/{id}")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Price")] Product product)
+        {
+            if (id != product.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(product);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductExists(product.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return View(product);
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.Id == id);
+        }
+
     }
 }
