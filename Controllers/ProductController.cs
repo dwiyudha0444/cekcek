@@ -24,6 +24,28 @@ namespace MyNewApp3.Controllers
             return View(products);
         }
 
-        
+        // Menampilkan Form Create
+        [HttpGet]
+        [Route("tambah")] // URL: /produk/tambah
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // Menyimpan Data ke Database
+        [HttpPost]
+        [Route("tambah")]
+        [ValidateAntiForgeryToken] // Mencegah serangan CSRF
+        public async Task<IActionResult> Create([Bind("Name,Price")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(product); // Tambahkan ke database
+                await _context.SaveChangesAsync(); // Simpan perubahan
+                return RedirectToAction("Index"); // Kembali ke daftar produk
+            }
+            return View(product);
+        }
+
     }
 }

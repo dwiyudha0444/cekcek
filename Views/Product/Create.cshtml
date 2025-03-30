@@ -1,0 +1,19 @@
+@model MyNewApp3.Models.Product
+
+<h2>Tambah Produk</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nama Produk</label>
+        <input asp-for="Name" required />
+    </div>
+    
+    <div>
+        <label>Harga</label>
+        <input asp-for="Price" type="number" required />
+    </div>
+
+    <button type="submit">Simpan</button>
+</form>
+
+<a asp-action="Index">Kembali ke Daftar Produk</a>
